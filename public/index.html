@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mute Button</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/material-icons.css" />
+    <link rel="stylesheet" href="bower_components/material-design-lite/material.min.css" />
+    <script src="socket.io/socket.io.js"></script>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/nosleep/NoSleep.js"></script>
+    <script src="bower_components/material-design-lite/material.min.js"></script>
+    <script src="client.js"></script>
+  </head>
+  <body>
+    <button type="button" class="mdl-button show-modal">Show Modal</button>
+    <div class="wsm-layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
+      <header class="wms-header mdl-layout__header mdl-layout__header--scroll">
+        <div class="mdl-layout__header-row">
+          <span class="mdl-layout-title">Mute Button</span>
+          <div class="mdl-layout-spacer"></div>
+          <button id="wake-lock" class="mdl-button mdl-js-button mdl-button--icon">
+            <i class="material-icons">lock_open</i>
+          </button>
+        </div>
+      </header>
+      <main class="wsm-main mdl-layout__content">
+        <div class="wms-aligner">
+          <div class="wms-aligner-item">
+            <button id="mutebutton" class="mdl-button mdl-js-button mdl-button--raised" disabled>
+            <span id="mutebuttonlegend" class="disable-select"><i class="fa fa-ban"></i></span>
+            </button>
+          </div>
+        </div>
+      </main>
+    </div>
+    <dialog class="mdl-dialog">
+      <div class="mdl-dialog__content">
+        <form action="#">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" id="sample1">
+            <label class="mdl-textfield__label" for="sample1">Name...</label>
+          </div>
+        </form>
+      </div>
+      <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
+        <button type="button" class="mdl-button close">Connect</button>
+      </div>
+    </dialog>
+    <script>
+      var dialog = document.querySelector('dialog');
+      var showModalButton = document.querySelector('.show-modal');
+      if (! dialog.showModal) {
+        dialogPolyfill.registerDialog(dialog);
+      }
+      showModalButton.addEventListener('click', function() {
+        dialog.showModal();
+      });
+      dialog.querySelector('.close').addEventListener('click', function() {
+        dialog.close();
+      });
+    </script>
+  </body>
+</html>
