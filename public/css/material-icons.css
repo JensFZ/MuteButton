@@ -32,5 +32,6 @@
   -moz-osx-font-smoothing: grayscale;
 
   /* Support for IE. */
-  font-feature-settings: 'liga' 0;
+
+  font-feature-settings: 'liga';
 }
