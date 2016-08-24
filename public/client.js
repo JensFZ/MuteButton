@@ -52,13 +52,13 @@ $(document).ready(function(){
   	}
   });
 
-
-  $usernameWeiter.on("click", function() {
-    setUsername();
-  });
+  // Prevents input from having injected markup
+  function cleanInput(input) {
+    return $("<div/>").text(input).text();
+  }
 
   // Username setzen
-  function setUsername () {
+  function setUsername() {
     username = cleanInput($usernameInput.val().trim());
 
     // If the username is valid
@@ -73,10 +73,9 @@ $(document).ready(function(){
     }
   }
 
-  // Prevents input from having injected markup
-  function cleanInput (input) {
-    return $("<div/>").text(input).text();
-  }
+  $usernameWeiter.on("click", function() {
+    setUsername();
+  });
 
   document.addEventListener("touchstart", enableNoSleep, false);
 
