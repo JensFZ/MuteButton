@@ -78,6 +78,6 @@ $(document).ready(function(){
     return $("<div/>").text(input).text();
   }
 
-  document.addEventListener('touchstart', enableNoSleep, false);
+  document.addEventListener("touchstart", enableNoSleep, false);
 
 });
