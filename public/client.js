@@ -78,4 +78,6 @@ $(document).ready(function(){
     return $("<div/>").text(input).text();
   }
 
+  //enableNoSleep();
+
 });
