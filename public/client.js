@@ -24,7 +24,7 @@ $(document).ready(function(){
                 + "] "
             ),
             // Name
-            $("<b>").text(typeof(data.name) != "undefined" ? data.name + ': ' : ''),
+            $("<b>").text(typeof(data.name) !== "undefined" ? data.name + ": " : ""),
             // Text
             $("<span>").text(data.text))
     );
