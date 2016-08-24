@@ -47,7 +47,7 @@ $(document).ready(function(){
   $("#senden").click(senden);
   // oder mit der Enter-Taste
   $("#text").keypress(function (e) {
-  	if (e.which == 13) {
+  	if (e.which === 13) {
       senden();
   	}
   });
