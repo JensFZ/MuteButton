@@ -15,7 +15,6 @@ $(document).ready(function(){
 
 
   var $usernameWeiter = $(".usernameWeiter");
-  //var $usernameInput = ;
   var $inputMessage = $(".inputMessage");
   var $loginPage = $(".login.page");
   var $chatPage = $(".chat.page");
