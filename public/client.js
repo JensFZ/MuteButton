@@ -12,7 +12,7 @@ $(document).ready(function(){
     setUsername();
     dialog.close();
   });
-  
+
 
   var $usernameWeiter = $(".usernameWeiter");
   var $inputMessage   = $(".inputMessage");
