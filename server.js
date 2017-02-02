@@ -27,6 +27,7 @@ app.get("/", function (req, res) {
 });
 
 io.sockets.on("connection", function (socket) {
+	console.log('connected');
 	var addedUser = false;
 
 	// der Client ist verbunden

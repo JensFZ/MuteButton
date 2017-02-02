@@ -1,6 +1,21 @@
 $(document).ready(function(){
+
+  var dialog = document.querySelector('dialog');
+  var showModalButton = document.querySelector('.show-modal');
+  if (! dialog.showModal) {
+    dialogPolyfill.registerDialog(dialog);
+  }
+  showModalButton.addEventListener('click', function() {
+    dialog.showModal();
+  });
+  dialog.querySelector('.close').addEventListener('click', function() {
+    setUsername();
+    dialog.close();
+  });
+
+
   var $usernameWeiter = $(".usernameWeiter");
-  var $usernameInput = $(".usernameInput");
+  //var $usernameInput = ;
   var $inputMessage = $(".inputMessage");
   var $loginPage = $(".login.page");
   var $chatPage = $(".chat.page");
@@ -59,7 +74,10 @@ $(document).ready(function(){
 
   // Username setzen
   function setUsername() {
-    username = cleanInput($usernameInput.val().trim());
+    console.log('hier');
+
+    username = cleanInput(dialog.querySelector('.Username').value.trim()); //cleanInput($usernameInput.value().trim());
+    console.log(username);
 
     // If the username is valid
     if (username) {
