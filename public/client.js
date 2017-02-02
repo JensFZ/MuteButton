@@ -30,10 +30,10 @@ $(document).ready(function(){
             $("<li></li>").append(
             // Uhrzeit
             $("<span>").text("[" +
-                (zeit.getHours() < 10 ? "0" + zeit.getHours() : zeit.getHours())
-                + ":" +
-                (zeit.getMinutes() < 10 ? "0" + zeit.getMinutes() : zeit.getMinutes())
-                + "] "
+                (zeit.getHours() < 10 ? "0" + zeit.getHours() : zeit.getHours()) +
+                ":" +
+                (zeit.getMinutes() < 10 ? "0" + zeit.getMinutes() : zeit.getMinutes()) + 
+                "] "
             ),
             // Name
             $("<b>").text(typeof data.name !== "undefined" ? data.name + ": " : ""),
@@ -91,6 +91,6 @@ $(document).ready(function(){
     $usernameWeiter.on("click", function() {
         setUsername();
     });
-    
+
     document.addEventListener("touchstart", enableNoSleep, false);
 });

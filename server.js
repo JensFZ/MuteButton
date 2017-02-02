@@ -22,8 +22,8 @@ app.use(methodOverride());
 
 // wenn der Pfad / aufgerufen wird
 app.get("/", function (req, res) {
-      // so wird die Datei index.html ausgegeben
-      res.sendfile(__dirname + "/public/index.html");
+    // so wird die Datei index.html ausgegeben
+    res.sendfile(__dirname + "/public/index.html");
 });
 
 io.sockets.on("connection", function (socket) {
