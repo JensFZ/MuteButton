@@ -22,32 +22,32 @@ app.use(methodOverride());
 
 // wenn der Pfad / aufgerufen wird
 app.get("/", function (req, res) {
-	// so wird die Datei index.html ausgegeben
-	res.sendfile(__dirname + "/public/index.html");
+  // so wird die Datei index.html ausgegeben
+  res.sendfile(__dirname + "/public/index.html");
 });
 
 io.sockets.on("connection", function (socket) {
-	console.log('connected');
-	var addedUser = false;
+  console.log('connected');
+  var addedUser = false;
 
-	// der Client ist verbunden
-	socket.on("add user", function(username) {
-		if (addedUser) {
-			return;
-		}
+  // der Client ist verbunden
+  socket.on("add user", function(username) {
+    if (addedUser) {
+      return;
+    }
 
-		addedUser = true;
-		socket.username = username;
-		console.log("user " + username + " connected");
-	});
+    addedUser = true;
+    socket.username = username;
+    console.log("user " + username + " connected");
+  });
 
-	socket.emit("chat", { zeit: new Date(), text: "Du bist nun mit dem Server verbunden!" });
-	// wenn ein Benutzer einen Text senden
-	socket.on("chat", function (data) {
-		// so wird dieser Text an alle anderen Benutzer gesendet
+  socket.emit("chat", { zeit: new Date(), text: "Du bist nun mit dem Server verbunden!" });
+  // wenn ein Benutzer einen Text senden
+  socket.on("chat", function (data) {
+    // so wird dieser Text an alle anderen Benutzer gesendet
     console.log("Name: " + data.name + " Text: " + data.text);
-		io.sockets.emit("chat", { zeit: new Date(), name: data.name || "Anonym", text: data.text });
-	});
+    io.sockets.emit("chat", { zeit: new Date(), name: data.name || "Anonym", text: data.text });
+  });
 });
 
 // listen (start app with node server.js) ======================================

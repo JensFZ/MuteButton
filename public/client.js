@@ -12,14 +12,14 @@ $(document).ready(function(){
     setUsername();
     dialog.close();
   });
-
+  
 
   var $usernameWeiter = $(".usernameWeiter");
-  var $inputMessage = $(".inputMessage");
-  var $loginPage = $(".login.page");
-  var $chatPage = $(".chat.page");
-  var socket = io.connect();
-  var noSleep = new NoSleep();
+  var $inputMessage   = $(".inputMessage");
+  var $loginPage      = $(".login.page");
+  var $chatPage       = $(".chat.page");
+  var socket          = io.connect();
+  var noSleep         = new NoSleep();
 
   function enableNoSleep() {
     noSleep.enable();
@@ -29,29 +29,29 @@ $(document).ready(function(){
   socket.on("chat", function (data) {
     var zeit = new Date(data.zeit);
     $("#content").append(
-        $("<li></li>").append(
-            // Uhrzeit
-            $("<span>").text("[" +
-                (zeit.getHours() < 10 ? "0" + zeit.getHours() : zeit.getHours())
-                + ":" +
-                (zeit.getMinutes() < 10 ? "0" + zeit.getMinutes() : zeit.getMinutes())
-                + "] "
-            ),
-            // Name
-            $("<b>").text(typeof data.name !== "undefined" ? data.name + ": " : ""),
-            // Text
-            $("<span>").text(data.text))
+      $("<li></li>").append(
+        // Uhrzeit
+        $("<span>").text("[" +
+        (zeit.getHours() < 10 ? "0" + zeit.getHours() : zeit.getHours())
+        + ":" +
+        (zeit.getMinutes() < 10 ? "0" + zeit.getMinutes() : zeit.getMinutes())
+        + "] "
+      ),
+      // Name
+      $("<b>").text(typeof data.name !== "undefined" ? data.name + ": " : ""),
+      // Text
+      $("<span>").text(data.text))
     );
     // nach unten scrollen
     $("body").scrollTop($("body")[0].scrollHeight);
   });
 
   function senden(){
-	  // Eingabefelder auslesen
+    // Eingabefelder auslesen
     var name = $("#name").val();
     var text = $("#text").val();
 
-	  // Socket senden
+    // Socket senden
     socket.emit("chat", { name: name, text: text });
 
     // Text-Eingabe leeren
@@ -61,9 +61,9 @@ $(document).ready(function(){
   $("#senden").click(senden);
   // oder mit der Enter-Taste
   $("#text").keypress(function (e) {
-  	if (e.which === 13) {
+    if (e.which === 13) {
       senden();
-  	}
+    }
   });
 
   // Prevents input from having injected markup
