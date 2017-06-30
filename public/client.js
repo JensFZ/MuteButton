@@ -18,6 +18,7 @@ $(document).ready(function(){
     var $inputMessage   = $(".inputMessage");
     var $loginPage      = $(".login.page");
     var $chatPage       = $(".chat.page");
+    var $usernameLabel  = $(".usernameLabel");
     var socket          = io.connect();
     var noSleep         = new NoSleep();
 
@@ -45,6 +46,7 @@ $(document).ready(function(){
         if (username) {
             // Sende den Benutzernamen an den Server
             socket.emit("add user", username);
+            $usernameLabel.text(" - " + username); 
         }
     }
 
