@@ -4,9 +4,14 @@ $(document).ready(function(){
     if (! dialog.showModal) {
         dialogPolyfill.registerDialog(dialog);
     }
-    showModalButton.addEventListener('click', function() {
-        dialog.showModal();
+
+    dialog.showModal();
+
+
+/*    showModalButton.addEventListener('click', function() {
+
     });
+    */
     dialog.querySelector('.close').addEventListener('click', function() {
         setUsername();
         dialog.close();
@@ -31,17 +36,17 @@ $(document).ready(function(){
 
     // Username setzen
     function setUsername() {
-        console.log('hier');
+        //console.log('hier');
 
         username = cleanInput(dialog.querySelector('.Username').value.trim());
-        console.log(username);
+        //console.log(username);
 
         // If the username is valid
         if (username) {
-            $loginPage.fadeOut();
-            $chatPage.show();
-            $loginPage.off("click");
-            $currentInput = $inputMessage.focus();
+            //$loginPage.fadeOut();
+            //$chatPage.show();
+            //$loginPage.off("click");
+            //$currentInput = $inputMessage.focus();
 
             // Tell the server your username
             socket.emit("add user", username);
