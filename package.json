@@ -13,7 +13,10 @@
     "socket.io": "*"
   },
   "devDependencies": {
-    "mocha": "*"
+    "codacy-coverage": "^2.0.2",
+    "coveralls": "^2.13.1",
+    "mocha": "*",
+    "mocha-lcov-reporter": "^1.3.0"
   },
   "scripts": {
     "test": "mocha"
