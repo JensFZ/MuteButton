@@ -6,9 +6,7 @@ $(document).ready(function(){
     }
 
     dialog.showModal();
-    /*    showModalButton.addEventListener('click', function() {
-    });
-    */
+
     dialog.querySelector('.close').addEventListener('click', function() {
         setUsername();
         dialog.close();
@@ -46,7 +44,7 @@ $(document).ready(function(){
         if (username) {
             // Sende den Benutzernamen an den Server
             socket.emit("add user", username);
-            $usernameLabel.text(" - " + username); 
+            $usernameLabel.text(" - " + username);
         }
     }
 
