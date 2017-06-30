@@ -21,31 +21,29 @@ $(document).ready(function(){
     var socket          = io.connect();
     var noSleep         = new NoSleep();
 
+    // Diese Funktion verhindert das abschalten des Displays
     function enableNoSleep() {
         noSleep.enable();
         document.removeEventListener("touchstart", enableNoSleep, false);
     }
 
-    // Prevents input from having injected markup
+    function disableNoSleep() {
+        noSleep.disable();
+        document.addEventListener("touchstart", enableNoSleep, false);
+    }
+
+    // den Inhalt des Elementes auslesen
     function cleanInput(input) {
         return $("<div/>").text(input).text();
     }
 
     // Username setzen
     function setUsername() {
-        //console.log('hier');
-
         username = cleanInput(dialog.querySelector('.Username').value.trim());
-        //console.log(username);
 
-        // If the username is valid
+        // Prüfen, ob ein Benutzername angegeben wurde
         if (username) {
-            //$loginPage.fadeOut();
-            //$chatPage.show();
-            //$loginPage.off("click");
-            //$currentInput = $inputMessage.focus();
-
-            // Tell the server your username
+            // Sende den Benutzernamen an den Server
             socket.emit("add user", username);
         }
     }
