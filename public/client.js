@@ -6,10 +6,7 @@ $(document).ready(function(){
     }
 
     dialog.showModal();
-
-
-/*    showModalButton.addEventListener('click', function() {
-
+    /*    showModalButton.addEventListener('click', function() {
     });
     */
     dialog.querySelector('.close').addEventListener('click', function() {
