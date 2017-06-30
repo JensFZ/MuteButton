@@ -41,13 +41,13 @@ io.sockets.on("connection", function (socket) {
         console.log("user " + username + " connected");
     });
 
+    /*
     socket.emit("chat", { zeit: new Date(), text: "Du bist nun mit dem Server verbunden!" });
     // wenn ein Benutzer einen Text senden
-    socket.on("chat", function (data) {
-        // so wird dieser Text an alle anderen Benutzer gesendet
-        console.log("Name: " + data.name + " Text: " + data.text);
-        io.sockets.emit("chat", { zeit: new Date(), name: data.name || "Anonym", text: data.text });
+    socket.on("Mute", function (data) {
+        console.log(socket.username);
     });
+    */
 });
 
 // listen (start app with node server.js) ======================================

@@ -24,46 +24,6 @@ $(document).ready(function(){
         document.removeEventListener("touchstart", enableNoSleep, false);
     }
 
-    socket.on("chat", function (data) {
-        var zeit = new Date(data.zeit);
-        $("#content").append(
-            $("<li></li>").append(
-            // Uhrzeit
-            $("<span>").text("[" +
-                (zeit.getHours() < 10 ? "0" + zeit.getHours() : zeit.getHours()) +
-                ":" +
-                (zeit.getMinutes() < 10 ? "0" + zeit.getMinutes() : zeit.getMinutes()) + 
-                "] "
-            ),
-            // Name
-            $("<b>").text(typeof data.name !== "undefined" ? data.name + ": " : ""),
-            // Text
-            $("<span>").text(data.text))
-        );
-        // nach unten scrollen
-        $("body").scrollTop($("body")[0].scrollHeight);
-    });
-
-    function senden(){
-        // Eingabefelder auslesen
-        var name = $("#name").val();
-        var text = $("#text").val();
-
-        // Socket senden
-        socket.emit("chat", { name: name, text: text });
-
-        // Text-Eingabe leeren
-        $("#text").val("");
-    }
-    // bei einem Klick
-    $("#senden").click(senden);
-    // oder mit der Enter-Taste
-    $("#text").keypress(function (e) {
-        if (e.which === 13) {
-            senden();
-        }
-    });
-
     // Prevents input from having injected markup
     function cleanInput(input) {
         return $("<div/>").text(input).text();
@@ -73,7 +33,7 @@ $(document).ready(function(){
     function setUsername() {
         console.log('hier');
 
-        username = cleanInput(dialog.querySelector('.Username').value.trim()); //cleanInput($usernameInput.value().trim());
+        username = cleanInput(dialog.querySelector('.Username').value.trim());
         console.log(username);
 
         // If the username is valid
